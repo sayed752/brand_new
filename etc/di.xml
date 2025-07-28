@@ -90,4 +90,26 @@
             <argument name="state" xsi:type="object">AmastyWrapper\SharedCatalog\State</argument>
         </arguments>
     </type>
+
+    <type name="Magento\Framework\Search\Request\Config\FilesystemReader">
+        <plugin name="Amasty_ShopbyBrand::AddBrandSearchRequest"
+                type="Amasty\ShopbyBrand\Plugin\Framework\Search\Request\Config\FilesystemReader\AddBrandSearchRequest"
+                sortOrder="9999"/>
+    </type>
+
+    <type name="Amasty\ShopbySeo\Model\SeoOptionsModifier\UniqueBuilder">
+        <plugin name="Amasty_ShopbyBrand::CheckUniqueWithBrandAliases"
+                type="Amasty\ShopbyBrand\Plugin\ShopbySeo\Model\SeoOptionsModifier\UniqueBuilder\CheckUniqueWithBrandAliases"/>
+    </type>
+
+    <virtualType name="AmastyWrapper\ShopbySeo\Helper\Config" type="Amasty\Base\Model\Di\Wrapper">
+        <arguments>
+            <argument name="name" xsi:type="string">Amasty\ShopbySeo\Helper\Config</argument>
+        </arguments>
+    </virtualType>
+    <type name="Amasty\ShopbyBrand\Helper\Data">
+        <arguments>
+            <argument name="shopBySeoConfig" xsi:type="object">AmastyWrapper\ShopbySeo\Helper\Config</argument>
+        </arguments>
+    </type>
 </config>
